@@ -15,16 +15,6 @@ class TableViewCell: UITableViewCell {
         return UINib(nibName: "TableViewCell", bundle: nil)
     }
     
-//    public func configure(with title: String, imageName: String) {
-//        myLabel.text = title
-//        myImage.image = UIImage(systemName: imageName)
-//    }
-//    public func configure(with title: String, imageName: String) {
-//  //        myLabel.text = title
-//  //        myImage.image = UIImage(systemName: imageName)
-  //    }
-    
-    
     
     @IBOutlet var myImage: UIImageView!
     @IBOutlet var myLabel: UILabel!
