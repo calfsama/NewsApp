@@ -19,6 +19,10 @@ class TableViewCell: UITableViewCell {
 //        myLabel.text = title
 //        myImage.image = UIImage(systemName: imageName)
 //    }
+//    public func configure(with title: String, imageName: String) {
+//  //        myLabel.text = title
+//  //        myImage.image = UIImage(systemName: imageName)
+  //    }
     
     
     
