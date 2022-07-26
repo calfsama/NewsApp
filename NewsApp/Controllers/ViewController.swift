@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var groups: [Models] = [Models(imageName: "4", title: "The company now expects to spend between $6 billion and $8 billion this year aThe company now expects to spend between $6 billion and $8 billion this year a The company now expects to spend between $6 billion and $8 billion this year a", source: "ABC NewsThe company now expects to spend between $6 billion and $8 billion this year aThe company now expects to spend between $6 billion and $8 billion this year aThe company now expects to spend between $6 billion and $8 billion this year aThe company now expects to spend between $6 billion and $8 billion this year a"),
                             Models(imageName: "5", title: "By David Shepardson WASHINGTON (Reuters) -   The U.S. Energy Department on Monday announced i", source: "BBC"),
-                            Models(imageName: "6", title: "Replying to Investigations Editor Michael Siconolfi", source: "Daile News")
+                            Models(imageName: "6", title: "Replying to Investigations Editor Michael Siconolfi", source: "Daile Newsc")
     ]
     
     
