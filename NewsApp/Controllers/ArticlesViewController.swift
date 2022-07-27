@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ArticlesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     var groups: [Models] = [Models(imageName: "4", title: "The company now expects to spend between $6 billion and $8 billion this year aThe company now expects to spend between $6 billion and $8 billion this year a The company now expects to spend between $6 billion and $8 billion this year a", source: "ABC NewsThe company now expects to spend between $6 billion and $8 billion this year aThe company now expects to spend between $6 billion and $8 billion this year aThe company now expects to spend between $6 billion and $8 billion this year aThe company now expects to spend between $6 billion and $8 billion this year a"),
