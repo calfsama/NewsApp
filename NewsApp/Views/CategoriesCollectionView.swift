@@ -10,11 +10,13 @@ import UIKit
 class CategoriesCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
    
     var cells = [Categories]()
+    var navigationController: UINavigationController
     
-    
-    init() {
+    init(nav: UIViewController) {
+        
     let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        self.navigationController = nav as! UINavigationController
         super.init(frame: .zero, collectionViewLayout: layout)
         
         backgroundColor = .systemBackground
@@ -28,8 +30,10 @@ class CategoriesCollectionView: UICollectionView, UICollectionViewDelegate, UICo
         contentInset = UIEdgeInsets(top: 0, left: Constants.leftDistance, bottom: 0, right: Constants.rightDistance)
         
         showsVerticalScrollIndicator = false
-        
-        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func set(cells: [Categories]) {
@@ -55,16 +59,15 @@ class CategoriesCollectionView: UICollectionView, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
-        let viewController = UINavigationController(rootViewController: ArticlesViewController())
-        self.inputViewController?.navigationController?.pushViewController(viewController, animated: true)
         
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "ArticlesViewController") as! ArticlesViewController
+        self.navigationController.pushViewController(vc, animated: true)
     }
     
 
     
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+ 
     
 }

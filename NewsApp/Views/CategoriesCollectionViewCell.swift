@@ -9,7 +9,6 @@ import UIKit
 
 class CategoriesCollectionViewCell: UICollectionViewCell {
     
-    
     static let identifier = "CategoriesCollectionViewCell"
     
     lazy var imageTitle: UIImageView = {

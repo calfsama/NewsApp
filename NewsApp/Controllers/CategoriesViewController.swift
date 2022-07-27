@@ -9,22 +9,26 @@ import UIKit
 
 class CategoriesViewController: UIViewController {
     
-    private var categoriesCollectionView = CategoriesCollectionView()
+    private var categoriesCollectionView: CategoriesCollectionView!
     
     private var categoriesCollectionViewCell = CategoriesCollectionViewCell()
+    
     
     let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        categoriesCollectionView = CategoriesCollectionView(nav: self.navigationController!)
+        
         searchBarController()
         configureConstraints()
         
         categoriesCollectionView.set(cells: Categories.items())
         
-        
-        
+        //controllers lifecycle
+        //guard let
+        //passing data between viewControllers
     }
     
     func searchBarController() {
@@ -34,6 +38,7 @@ class CategoriesViewController: UIViewController {
     }
     
     private func configureConstraints() {
+        
         
         view.addSubview(categoriesCollectionView)
         
