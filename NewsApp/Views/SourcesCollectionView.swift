@@ -11,11 +11,13 @@ class SourcesCollectionView: UICollectionView, UICollectionViewDelegateFlowLayou
     
     
     var cells = [Sources]()
+    var navigationController: UINavigationController
     
     
-    init() {
+    init(nav: UIViewController) {
     let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        self.navigationController = nav as! UINavigationController
         super.init(frame: .zero, collectionViewLayout: layout)
         
         backgroundColor = .systemBackground
@@ -52,7 +54,6 @@ extension SourcesCollectionView: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: SourcesCollectionViewCell.identifier, for: indexPath) as! SourcesCollectionViewCell
         cell.imageTitle.backgroundColor = cells[indexPath.row].color
-        //cell.imageTitle.backgroundColor = UIColor(named: "purple")
         cell.nameTitle.text = cells[indexPath.row].title
         cell.category.text = cells[indexPath.row].category
        
@@ -60,6 +61,17 @@ extension SourcesCollectionView: UICollectionViewDelegate, UICollectionViewDataS
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: Constants.itemWidth, height: 200)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ApiViewController") as! ApiViewController
+        vc.title = cells[indexPath.row].title
+        self.navigationController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "\(cells[indexPath.row].title)", style: .plain, target: nil, action: nil)
+        self.navigationController.pushViewController(vc, animated: true)
+        
     }
     
     

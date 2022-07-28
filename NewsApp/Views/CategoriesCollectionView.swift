@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoriesCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CategoriesCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout {
    
     var cells = [Categories]()
     var navigationController: UINavigationController
@@ -32,14 +32,20 @@ class CategoriesCollectionView: UICollectionView, UICollectionViewDelegate, UICo
         showsVerticalScrollIndicator = false
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     func set(cells: [Categories]) {
         self.cells = cells
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
+    
+}
+extension CategoriesCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cells.count
@@ -49,7 +55,6 @@ class CategoriesCollectionView: UICollectionView, UICollectionViewDelegate, UICo
         let cell = dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.identifier, for: indexPath) as! CategoriesCollectionViewCell
         cell.imageTitle.backgroundColor = cells[indexPath.row].color
         cell.nameTitle.text = cells[indexPath.row].title
-        cell.nameTitle.textAlignment = .center
         return cell
     }
     
@@ -61,13 +66,11 @@ class CategoriesCollectionView: UICollectionView, UICollectionViewDelegate, UICo
         print(indexPath.row)
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "ArticlesViewController") as! ArticlesViewController
+        let vc = storyBoard.instantiateViewController(withIdentifier: "ApiViewController") as! ApiViewController
+        vc.title = cells[indexPath.row].title
+        self.navigationController.navigationItem.backBarButtonItem?.title = "\(cells[indexPath.row].title)"
+        //self.navigationController.navigationBar.backItem?.title = "News"
+        self.navigationController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "\(cells[indexPath.row].title)", style: .plain, target: nil, action: nil)
         self.navigationController.pushViewController(vc, animated: true)
     }
-    
-
-    
-    
- 
-    
 }

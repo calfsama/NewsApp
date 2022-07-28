@@ -11,7 +11,7 @@ class CategoriesViewController: UIViewController {
     
     private var categoriesCollectionView: CategoriesCollectionView!
     
-    private var categoriesCollectionViewCell = CategoriesCollectionViewCell()
+    //private var categoriesCollectionViewCell = CategoriesCollectionViewCell()
     
     
     let searchController = UISearchController(searchResultsController: nil)

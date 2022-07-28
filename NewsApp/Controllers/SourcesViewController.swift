@@ -9,12 +9,19 @@ import UIKit
 
 class SourcesViewController: UIViewController {
     
-    private var sourcesCollectionView = SourcesCollectionView()
+    
+    
+    private var sourcesCollectionView: SourcesCollectionView!
+    
+    private var sourcesCollectionViewCell = SourcesCollectionViewCell()
+    
     
     let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sourcesCollectionView = SourcesCollectionView(nav: self.navigationController!)
 
         view.addSubview(sourcesCollectionView)
         navigationItem.searchController = searchController

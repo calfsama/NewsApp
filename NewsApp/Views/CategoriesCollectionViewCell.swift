@@ -35,14 +35,6 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         configureConstraints()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    
-    
-    
      func configureConstraints(){
          contentView.addSubview(imageTitle)
          contentView.addSubview(nameTitle)
@@ -57,5 +49,8 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
             nameTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             nameTitle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
