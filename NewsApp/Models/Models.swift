@@ -27,16 +27,17 @@ struct Categories{
 }
 
 struct Sources {
-    var color: UIColor
-    var title: String
+    var colour: UIColor
+    var label: String
     var category: String
+
     
     
     static func items() -> [Sources] {
-        let first = Sources(color: UIColor(named: "gray2")!, title: "ABC News", category: "General")
-        let second = Sources(color: UIColor(named: "gray2")!, title: "BBC", category: "General")
-        let third = Sources(color: UIColor(named: "gray2")!, title: "Axios", category: "General")
-        let fourth = Sources(color: UIColor(named: "gray2")!, title: "Ars Technica", category: "Technology")
+        let first = Sources(colour: UIColor(named: "gray2")!, label: "ABC News", category: "General")
+        let second = Sources(colour: UIColor(named: "gray2")!, label: "BBC", category: "General")
+        let third = Sources(colour: UIColor(named: "gray2")!, label: "Axios", category: "General")
+        let fourth = Sources(colour: UIColor(named: "gray2")!, label: "Ars Technica", category: "Technology")
         
         return [first,second, third, fourth]
     }
@@ -56,3 +57,5 @@ struct Models {
     var title: String
     var source: String
 }
+
+

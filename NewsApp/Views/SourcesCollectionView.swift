@@ -10,6 +10,7 @@ import UIKit
 class SourcesCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout {
     
     
+    var categories = [Categories]()
     var cells = [Sources]()
     var navigationController: UINavigationController
     
@@ -39,6 +40,10 @@ class SourcesCollectionView: UICollectionView, UICollectionViewDelegateFlowLayou
         self.cells = cells
     }
     
+    func set(categories: [Categories]) {
+        self.categories = categories
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -53,9 +58,14 @@ extension SourcesCollectionView: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: SourcesCollectionViewCell.identifier, for: indexPath) as! SourcesCollectionViewCell
-        cell.imageTitle.backgroundColor = cells[indexPath.row].color
-        cell.nameTitle.text = cells[indexPath.row].title
+        cell.imageTitle.backgroundColor = cells[indexPath.row].colour
+        cell.nameTitle.text = cells[indexPath.row].label
         cell.category.text = cells[indexPath.row].category
+//        let cat = categories[indexPath.row].title
+//        let colors = cells[indexPath.row].category
+//        if colors == cat {
+//            cell.color.backgroundColor = categories[indexPath.row].color
+//        }
        
         return cell
     }
@@ -68,8 +78,8 @@ extension SourcesCollectionView: UICollectionViewDelegate, UICollectionViewDataS
         
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ApiViewController") as! ApiViewController
-        vc.title = cells[indexPath.row].title
-        self.navigationController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "\(cells[indexPath.row].title)", style: .plain, target: nil, action: nil)
+        vc.title = cells[indexPath.row].label
+        self.navigationController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "\(cells[indexPath.row].label)", style: .plain, target: nil, action: nil)
         self.navigationController.pushViewController(vc, animated: true)
         
     }

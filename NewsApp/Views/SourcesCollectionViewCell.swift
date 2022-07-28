@@ -39,6 +39,15 @@ class SourcesCollectionViewCell: UICollectionViewCell {
         return category
     }()
     
+    lazy var color: UIImageView = {
+        let color = UIImageView()
+        color.layer.cornerRadius = 50
+        color.layer.masksToBounds = true
+        color.translatesAutoresizingMaskIntoConstraints = false
+        color.backgroundColor = .black
+        return color
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureConstraints()
@@ -49,6 +58,7 @@ class SourcesCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(imageTitle)
         contentView.addSubview(nameTitle)
         contentView.addSubview(category)
+        //contentView.addSubview(color)
         
         NSLayoutConstraint.activate([
             
@@ -61,8 +71,16 @@ class SourcesCollectionViewCell: UICollectionViewCell {
             nameTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             nameTitle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
+//            
+//            color.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: 20),
+//            color.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: 20),
+//            color.topAnchor.constraint(equalTo: nameTitle.bottomAnchor,constant: 50),
+//            color.trailingAnchor.constraint(equalTo: category.trailingAnchor, constant: 10),
+            
             category.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             category.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 50)
+            
+            
         ])
         
     }

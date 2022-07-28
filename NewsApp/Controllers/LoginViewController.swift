@@ -74,59 +74,94 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        email.delegate = self
+        password.delegate = self
+        
+        view.addSubview(nameTitle)
+        view.addSubview(email)
+        view.addSubview(password)
+        view.addSubview(loginButton)
+        view.addSubview(registerButton)
         view.backgroundColor = .systemBackground
         
         registerButton.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpInside)
-       
+        loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
         
-        func configureConstraints() {
-            
-            
-            view.addSubview(nameTitle)
-            view.addSubview(email)
-            view.addSubview(password)
-            view.addSubview(loginButton)
-            view.addSubview(registerButton)
-            
-            
-            NSLayoutConstraint.activate([
-                
-    //            nameTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 150)
-    //            nameTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 150)
-                nameTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                nameTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
-                
-                //email.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-                email.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 50),
-                email.heightAnchor.constraint(equalToConstant: 50),
-                email.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                email.widthAnchor.constraint(equalToConstant: 300),
-
-
-                //password.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-                password.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 20),
-                password.heightAnchor.constraint(equalToConstant: 50),
-                password.widthAnchor.constraint(equalToConstant: 350),
-
-                //loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30)
-                loginButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 20),
-                loginButton.heightAnchor.constraint(equalToConstant: 50),
-                loginButton.widthAnchor.constraint(equalToConstant: 350),
-
-                //registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
-                registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 300)
-            
-            ])
-        }
+        
+//        nameTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 150).isActive = true
+//        nameTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 150).isActive = true
+        nameTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nameTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 230).isActive = true
+        
+        
+        //email.center
+        email.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        email.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 50).isActive = true
+        email.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        email.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        
+        
+        password.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 20).isActive = true
+        password.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        password.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        
+        
+        loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 20).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        loginButton.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        
+        registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 300).isActive = true
     }
+    
+    
         @objc private func didTapCreateAccountButton() {
     
             let vc = RegistrationViewController()
-            vc.title = "Create Account"
+            //vc.title = "Create Account"
     
             present(UINavigationController(rootViewController: vc), animated: true)
         }
+    
+    @objc private func didTapLoginButton() {
+        
+        password.resignFirstResponder()
+        email.resignFirstResponder()
+        
+        guard let userEmail = email.text, !userEmail.isEmpty,
+              let userPassword = password.text, !userPassword.isEmpty, userPassword.count >= 8 else {
+            return
+        }
+        
+        //login functionally
+        var emailAddress: String?
+        var username: String?
+        
+        if userEmail.contains("@"), userEmail.contains("."){
+            //email
+            emailAddress = userEmail
+        }
+        else {
+            // username
+            username = userEmail
+        }
+    }
+    
+    
+
+}
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == email {
+            password.becomeFirstResponder()
+        }
+        else if textField == password {
+            didTapLoginButton()
+        }
+        return true
+    }
 }
 

@@ -77,11 +77,14 @@ class ApiViewController: UIViewController{
             cell.myLabel.text = article?.title
             cell.sources.text = article?.source?.name
             cell.myImage.contentMode = .scaleAspectFill
-            //let defaultLink = "https://www.reuters.com"
-            //let completeLink = defaultLink + (article?.urlToImage)!
             cell.myImage.downloaded(from: (article?.urlToImage)!)
-            //cell.myImage.image = UIImage(named: (article?.urlToImage)! )
             return cell
+        }
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            print(indexPath.row)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     
     }
