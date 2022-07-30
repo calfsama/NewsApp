@@ -18,7 +18,7 @@ struct Categories{
         let third = Categories(color: UIColor(named: "orange")!, title: "Science")
         let fourth = Categories(color: UIColor(named: "red")!, title: "Technology")
         let fifth = Categories(color: UIColor(named: "yellow")!, title: "Health")
-        let sixth = Categories(color: UIColor(named: "blue")!, title: "Entertaiment")
+        let sixth = Categories(color: UIColor(named: "blue")!, title: "Entertainment")
         let seventh = Categories(color: UIColor(named: "purple")!, title: "Sports")
         
         return [first, second, third, fourth, fifth, sixth, seventh]
@@ -57,5 +57,7 @@ struct Models {
     var title: String
     var source: String
 }
+
+
 
 

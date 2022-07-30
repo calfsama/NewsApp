@@ -10,7 +10,7 @@ import UIKit
 
 
 extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
+    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFill) {
         contentMode = mode
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard
@@ -34,8 +34,9 @@ class ApiViewController: UIViewController{
     
         let network = Network()
         var news: Articles?
-        private var timer: Timer?
-        
+    
+        var business = "business"
+        var sports = "general"
         
         @IBOutlet weak var table: UITableView!
         
@@ -45,12 +46,14 @@ class ApiViewController: UIViewController{
             table.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
             table.delegate = self
             table.dataSource = self
-          
-    
             
-            let urlString = "https://newsapi.org/v2/everything?q=bitcoin&apiKey=5ed9b9eb9b7746b8a925c87ab583ccfa"
+            
+           
+            //var cat = ["business", "general"]
+           sports = business
+          
    
-            network.request(urlString: urlString) { [weak self] (result) in
+            network.request(catName: sports) { [weak self] (result) in
                 switch result {
                 case .success(let response):
                     self?.news = response
@@ -76,8 +79,8 @@ class ApiViewController: UIViewController{
             let article = news?.articles?[indexPath.row]
             cell.myLabel.text = article?.title
             cell.sources.text = article?.source?.name
-            cell.myImage.contentMode = .scaleAspectFill
-            cell.myImage.downloaded(from: (article?.urlToImage)!)
+            //cell.myImage.contentMode = .scaleAspectFill
+            cell.myImage.downloaded(from: article?.urlToImage ?? "")
             return cell
         }
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

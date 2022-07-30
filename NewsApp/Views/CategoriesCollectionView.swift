@@ -68,9 +68,28 @@ extension CategoriesCollectionView: UICollectionViewDelegate, UICollectionViewDa
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "ApiViewController") as! ApiViewController
         vc.title = cells[indexPath.row].title
-        self.navigationController.navigationItem.backBarButtonItem?.title = "\(cells[indexPath.row].title)"
-        //self.navigationController.navigationBar.backItem?.title = "News"
-        self.navigationController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "\(cells[indexPath.row].title)", style: .plain, target: nil, action: nil)
+            //vc.business = "health"
+        if ((indexPath.row) == 0) {
+            vc.business = "general"
+        }
+        else if ((indexPath.row) == 1) {
+            vc.business = "business"
+        }
+        else if ((indexPath.row) == 2) {
+            vc.business = "science"
+        }
+        else if ((indexPath.row) == 3) {
+            vc.business = "technology"
+        }
+        else if ((indexPath.row) == 4) {
+            vc.business = "health"
+        }
+        else if ((indexPath.row) == 5){
+            vc.business = "entertainment"
+        }
+        else if ((indexPath.row) == 6){
+            vc.business = "sports"
+        }
         self.navigationController.pushViewController(vc, animated: true)
     }
 }

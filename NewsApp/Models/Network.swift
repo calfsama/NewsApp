@@ -8,7 +8,10 @@ import Foundation
 
 class Network {
     
-    func request(urlString: String, completion: @escaping(Result<Articles, Error>) -> Void) {
+    func request(catName: String, completion: @escaping(Result<Articles, Error>) -> Void) {
+        
+        let urlString = "https://newsapi.org/v2/top-headlines?country=de&category=\(catName)&apiKey=5ed9b9eb9b7746b8a925c87ab583ccfa"
+        
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             print(url)
