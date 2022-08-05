@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Log in", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemIndigo
         button.layer.cornerRadius = 20
         button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false

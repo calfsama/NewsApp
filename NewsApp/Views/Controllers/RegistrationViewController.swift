@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegistrationViewController: UIViewController {
     
@@ -70,7 +71,7 @@ class RegistrationViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemIndigo
         button.layer.cornerRadius = 20
         button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -133,7 +134,10 @@ class RegistrationViewController: UIViewController {
               let userPassword = password.text, !userPassword.isEmpty, userPassword.count <= 8 else {
             return
         }
-    }
+            
+            
+}
+    
 }
 extension RegistrationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -8,8 +8,9 @@
 import UIKit
 
 class SourcesViewController: UIViewController {
-    
-    
+
+    var network = NetworkService()
+    var sources: Sources?
     
     private var sourcesCollectionView: SourcesCollectionView!
     
@@ -22,6 +23,17 @@ class SourcesViewController: UIViewController {
         super.viewDidLoad()
         
         sourcesCollectionView = SourcesCollectionView(nav: self.navigationController!)
+        
+        network.fetchSources() { [weak self] (result) in
+        switch result {
+        case .success(let response):
+            self?.sourcesCollectionView.sources = response
+        //self?.sourcesCollectionView.set(data: response)
+            self?.sourcesCollectionView.reloadData()
+        case .failure(let error):
+            print("error", error)
+        }
+    }
 
         view.addSubview(sourcesCollectionView)
         navigationItem.searchController = searchController
@@ -32,8 +44,7 @@ class SourcesViewController: UIViewController {
         sourcesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         sourcesCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
         sourcesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        sourcesCollectionView.set(cells: Sources.items())
+                            
     }
 }
 

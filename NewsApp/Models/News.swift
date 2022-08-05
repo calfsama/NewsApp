@@ -7,34 +7,10 @@
 
 import Foundation
 
-
-//struct News: Codable {
-//    var totalResults: Int?
-//    var articles: [Articles]?
-//}
-//
-//
-//struct Articles: Codable {
-//    var source: [Source]?
-//    var author: String?
-//    var title: String?
-//    var description: String?
-//    var urlToImage: String?
-//    var publishedAt: String?
-//    var content: String?
-//}
-//
-//struct Source: Codable {
-//    var id: Int?
-//    var name: String?
-//
-//}
-
-
 // MARK: - Artcles
 struct Articles: Codable {
    // let status: String?
-    let totalResults: Int?
+    var totalResults: Int?
     let articles: [Article]?
 }
 
@@ -54,9 +30,9 @@ struct Article: Codable {
     }
 }
 
-// MARK: - Source
-struct Source: Codable {
-    //var id: String?
-    let name: String?
-}
+//// MARK: - Source
+//struct Source: Codable {
+//    var id: String?
+//    let name: String?
+//}
 

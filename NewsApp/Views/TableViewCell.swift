@@ -23,6 +23,9 @@ class TableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        contentView.addSubview(myImage)
+        contentView.addSubview(myLabel)
+        contentView.addSubview(sources)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

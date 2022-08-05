@@ -25,7 +25,7 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .secondaryLabel
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

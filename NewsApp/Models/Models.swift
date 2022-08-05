@@ -26,30 +26,44 @@ struct Categories{
     
 }
 
-struct Sources {
-    var colour: UIColor
-    var label: String
-    var category: String
-
-    
-    
-    static func items() -> [Sources] {
-        let first = Sources(colour: UIColor(named: "gray2")!, label: "ABC News", category: "General")
-        let second = Sources(colour: UIColor(named: "gray2")!, label: "BBC", category: "General")
-        let third = Sources(colour: UIColor(named: "gray2")!, label: "Axios", category: "General")
-        let fourth = Sources(colour: UIColor(named: "gray2")!, label: "Ars Technica", category: "Technology")
-        
-        return [first,second, third, fourth]
-    }
-}
-
+//struct Sources {
+//    var colour: UIColor
+//    var label: String
+//    var category: String
+//    var color: String
+//
+//
+//
+//    static func items() -> [Sources] {
+//        let first = Sources(colour: UIColor(named: "gray2")!, label: "ABC News", category: "General", color: "")
+//        let second = Sources(colour: UIColor(named: "gray2")!, label: "Aftenposten", category: "General", color: "")
+//        let third = Sources(colour: UIColor(named: "gray2")!, label: "Axios", category: "General", color: "")
+//        let fourth = Sources(colour: UIColor(named: "gray2")!, label: "Ars Technica", category: "Technology", color: "")
+//        let fifth = Sources(colour: UIColor(named: "gray2")!, label: "Al Jazeera English", category: "General", color: "")
+//        let sixth = Sources(colour: UIColor(named: "gray2")!, label: "Ary News", category: "General", color: "")
+//        let seventh = Sources(colour: UIColor(named: "gray2")!, label: "BBC News", category: "General", color: "")
+//        let eighth = Sources(colour: UIColor(named: "gray2")!, label: "BBC Sport", category: "Sports", color: "")
+//        let ninth = Sources(colour: UIColor(named: "gray2")!, label: "Buzzfeed", category: "Entertainment", color: "")
+//        let tenth = Sources(colour: UIColor(named: "gray2")!, label: "Crypto Coins News", category: "Technology", color: "")
+//        let eleventh = Sources(colour: UIColor(named: "gray2")!, label: "Engadget", category: "Technology", color: "")
+//        let twelveth = Sources(colour: UIColor(named: "gray2")!, label: "El Mundo", category: "General", color: "")
+//        let thiteenth = Sources(colour: UIColor(named: "gray2")!, label: "ESPN", category: "Sports", color: "")
+//        let fourteenth = Sources(colour: UIColor(named: "gray2")!, label: "Medical News Today", category: "Health", color: "")
+//        let fifteenth = Sources(colour: UIColor(named: "gray2")!, label: "National Geographic", category: "Science", color: "")
+//        let sixteenth = Sources(colour: UIColor(named: "gray2")!, label: "New Scientist", category: "Science", color: "")
+//
+//
+//        return [first,second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelveth, thiteenth, fourteenth, fifteenth, sixteenth]
+//    }
+//}
+//
 struct Constants {
-    
+
     static let leftDistance: CGFloat = 10
     static let rightDistance: CGFloat = 10
     static let itemLineSpacing: CGFloat = 20
     static let itemWidth = (UIScreen.main.bounds.width - Constants.leftDistance - Constants.rightDistance - Constants.itemLineSpacing) / 2
-    
+
 }
 
 struct Models {

@@ -14,8 +14,7 @@ class SourcesCollectionViewCell: UICollectionViewCell {
     
     lazy var imageTitle: UIImageView = {
         let image = UIImageView()
-        //image.backgroundColor = UIColor(named: "gray")
-        image.backgroundColor = .label
+        //image.backgroundColor = .label
         image.layer.cornerRadius = 20
         image.layer.masksToBounds = true
         image.contentMode = .scaleAspectFill
@@ -25,7 +24,7 @@ class SourcesCollectionViewCell: UICollectionViewCell {
     
     lazy var nameTitle: UILabel = {
         let title = UILabel()
-        title.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        title.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         title.textColor = .secondaryLabel
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
@@ -33,18 +32,18 @@ class SourcesCollectionViewCell: UICollectionViewCell {
     
     lazy var category: UILabel = {
         let category = UILabel()
-        category.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        category.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         category.textColor = .secondaryLabel
         category.translatesAutoresizingMaskIntoConstraints = false
         return category
     }()
     
-    lazy var color: UIImageView = {
-        let color = UIImageView()
-        color.layer.cornerRadius = 50
+    lazy var color: UIButton = {
+        let color = UIButton()
+        color.backgroundColor = .gray
+        color.layer.cornerRadius = 30
         color.layer.masksToBounds = true
         color.translatesAutoresizingMaskIntoConstraints = false
-        color.backgroundColor = .black
         return color
     }()
     
@@ -58,7 +57,7 @@ class SourcesCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(imageTitle)
         contentView.addSubview(nameTitle)
         contentView.addSubview(category)
-        //contentView.addSubview(color)
+        contentView.addSubview(color)
         
         NSLayoutConstraint.activate([
             
@@ -68,17 +67,24 @@ class SourcesCollectionViewCell: UICollectionViewCell {
             imageTitle.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageTitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            nameTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            //nameTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             nameTitle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            
-//            
-//            color.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: 20),
-//            color.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: 20),
-//            color.topAnchor.constraint(equalTo: nameTitle.bottomAnchor,constant: 50),
-//            color.trailingAnchor.constraint(equalTo: category.trailingAnchor, constant: 10),
+            nameTitle.leadingAnchor.constraint(equalTo: imageTitle.leadingAnchor,constant: 50),
+            nameTitle.trailingAnchor.constraint(equalTo: imageTitle.trailingAnchor,constant: 50),
+            nameTitle.widthAnchor.constraint(equalToConstant: 5),
+//            nameTitle.leftAnchor.constraint(equalTo: imageTitle.leftAnchor, constant: 30),
+//            nameTitle.rightAnchor.constraint(equalTo: imageTitle.rightAnchor, constant: 30),
             
             category.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            category.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 50)
+            category.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 53),
+            
+
+            color.topAnchor.constraint(equalTo: nameTitle.bottomAnchor,constant: 44),
+            color.trailingAnchor.constraint(equalTo: category.leadingAnchor),
+            color.widthAnchor.constraint(equalToConstant: 20),
+            color.heightAnchor.constraint(equalToConstant: 30)
+            
+            
             
             
         ])
