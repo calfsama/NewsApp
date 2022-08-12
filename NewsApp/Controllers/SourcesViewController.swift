@@ -11,6 +11,7 @@ class SourcesViewController: UIViewController {
 
     var network = NetworkService()
     var sources: Sources?
+    var key:String = "8a08b923eb6f47619e3cbb0fa7c4e114"
     
     private var sourcesCollectionView: SourcesCollectionView!
     
@@ -24,11 +25,11 @@ class SourcesViewController: UIViewController {
         
         sourcesCollectionView = SourcesCollectionView(nav: self.navigationController!)
         
-        network.fetchSources() { [weak self] (result) in
+        network.fetchSources(apiKey: key) { [weak self] (result) in
         switch result {
         case .success(let response):
             self?.sourcesCollectionView.sources = response
-        //self?.sourcesCollectionView.set(data: response)
+            //self?.sourcesCollectionView.set(data: response)
             self?.sourcesCollectionView.reloadData()
         case .failure(let error):
             print("error", error)

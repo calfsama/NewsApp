@@ -77,7 +77,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="8I8-2V-Dzn">
-                        <barButtonItem key="rightBarButtonItem" image="bookmark" catalog="system" landscapeImage="bookmark.fill" id="GEE-fu-lnc"/>
+                        <barButtonItem key="rightBarButtonItem" image="bookmark" catalog="system" id="GEE-fu-lnc">
+                            <connections>
+                                <action selector="addBookmarks:" destination="XxT-8A-cPb" id="e4j-M5-8yi"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIr-Qi-m0Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -221,7 +225,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="DI5-RC-Xcg">
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="DI5-RC-Xcg">
                                                     <rect key="frame" x="192" y="30" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="JO4-pM-UPE"/>
@@ -267,7 +271,7 @@
         <!--Bookmarks-->
         <scene sceneID="KBL-Jj-Wn4">
             <objects>
-                <viewController id="VJe-Wx-rhl" customClass="BookmarksViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VJe-Wx-rhl" customClass="ApiViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cMP-Xu-LiY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -394,7 +398,6 @@
     </scenes>
     <resources>
         <image name="bookmark" catalog="system" width="112" height="128"/>
-        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="tray.2.fill" catalog="system" width="128" height="114"/>

@@ -93,34 +93,45 @@ class RegistrationViewController: UIViewController {
         view.addSubview(nameTitle)
         
         view.backgroundColor = .systemBackground
-        
-        
+
         registerButton.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
         
-        nameTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        nameTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
+        configureConstraints()
         
-        email.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        email.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 70).isActive = true
-        email.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        email.widthAnchor.constraint(equalToConstant: 350).isActive = true
+    }
+    
+    func configureConstraints() {
         
-        usernameField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        usernameField.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 20).isActive = true
-        usernameField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        usernameField.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        
+        NSLayoutConstraint.activate([
+        
+            
+            nameTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nameTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            
+            email.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            email.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 70),
+            email.heightAnchor.constraint(equalToConstant: 50),
+            email.widthAnchor.constraint(equalToConstant: 350),
+            
+            usernameField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            usernameField.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 20),
+            usernameField.heightAnchor.constraint(equalToConstant: 50),
+            usernameField.widthAnchor.constraint(equalToConstant: 350),
 
+            
+            password.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            password.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 20),
+            password.heightAnchor.constraint(equalToConstant: 50),
+            password.widthAnchor.constraint(equalToConstant: 350),
+            
+            registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            registerButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 20),
+            registerButton.heightAnchor.constraint(equalToConstant: 50),
+            registerButton.widthAnchor.constraint(equalToConstant: 350)
         
-        password.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        password.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 20).isActive = true
-        password.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        password.widthAnchor.constraint(equalToConstant: 350).isActive = true
         
-        registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        registerButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 20).isActive = true
-        registerButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        registerButton.widthAnchor.constraint(equalToConstant: 350).isActive = true
-        
+        ])
     }
     
     @objc private func didTapRegister() {

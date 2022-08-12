@@ -11,8 +11,6 @@ class CategoriesViewController: UIViewController {
     
     private var categoriesCollectionView: CategoriesCollectionView!
     
-    //private var categoriesCollectionViewCell = CategoriesCollectionViewCell()
-    
     
     let searchController = UISearchController(searchResultsController: nil)
 
@@ -25,10 +23,7 @@ class CategoriesViewController: UIViewController {
         configureConstraints()
         
         categoriesCollectionView.set(cells: Categories.items())
-        
-        //controllers lifecycle
-        //guard let
-        //passing data between viewControllers
+ 
     }
     
     func searchBarController() {

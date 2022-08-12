@@ -5,21 +5,32 @@
 //  Created by Tomiris Negmatova on 28/07/22.
 //
 import Foundation
+import CoreData
+import UIKit
 
 class NetworkService {
     
+    // MARK: - NEWS API
+    
+    //        apiKey = "5ed9b9eb9b7746b8a925c87ab583ccfa"
+    //        apiKey = "b39c620e1c3a4366af54ea491dbf78cb"
+    //        apiKey = "bf7fbe95ff8a449ea7100170b76e4c8c"
+    //        apiKey = "8a08b923eb6f47619e3cbb0fa7c4e114"
+    
     // MARK: - Article data
     
-    func fetchCategory(catName: String, kind: String, page: String,pageNumber: Int, completion: @escaping(Result<Articles, Error>) -> Void) {
+    func fetchCategory(catName: String, kind: String, page: String,pageNumber: Int, apiKey: String, completion: @escaping(Result<Articles, Error>) -> Void) {
         
-        let urlString = "https://newsapi.org/v2/top-headlines\(kind)\(catName)&language=en\(page)\(pageNumber)&apiKey=5ed9b9eb9b7746b8a925c87ab583ccfa"
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        let urlString = "https://newsapi.org/v2/top-headlines\(kind)\(catName)&language=en\(page)\(pageNumber)&apiKey=\(apiKey)"
+        print(urlString)
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             print(url)
             DispatchQueue.main.async {
                 if let error = error {
                     print("Some error")
-                    //completion(nil, error)
                     completion(.failure(error))
                     return
                 }
@@ -39,16 +50,15 @@ class NetworkService {
     
     // MARK: - Source data
     
-    func fetchSources(completion: @escaping(Result<Sources, Error>) -> Void) {
+    func fetchSources(apiKey: String, completion: @escaping(Result<Sources, Error>) -> Void) {
 
-        let urlString = "https://newsapi.org/v2/top-headlines/sources?language=en&apiKey=5ed9b9eb9b7746b8a925c87ab583ccfa"
+        let urlString = "https://newsapi.org/v2/top-headlines/sources?language=en&apiKey=\(apiKey)"
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             print(url)
             DispatchQueue.main.async {
                 if let error = error {
                     print("Some error")
-                    //completion(nil, error)
                     completion(.failure(error))
                     return
                 }

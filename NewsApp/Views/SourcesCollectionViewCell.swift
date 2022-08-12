@@ -14,7 +14,6 @@ class SourcesCollectionViewCell: UICollectionViewCell {
     
     lazy var imageTitle: UIImageView = {
         let image = UIImageView()
-        //image.backgroundColor = .label
         image.layer.cornerRadius = 20
         image.layer.masksToBounds = true
         image.contentMode = .scaleAspectFill
@@ -52,6 +51,8 @@ class SourcesCollectionViewCell: UICollectionViewCell {
         configureConstraints()
     }
     
+    //MARK: - Set constraints
+    
     private func configureConstraints() {
         
         contentView.addSubview(imageTitle)
@@ -67,13 +68,10 @@ class SourcesCollectionViewCell: UICollectionViewCell {
             imageTitle.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageTitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            //nameTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            nameTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             nameTitle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             nameTitle.leadingAnchor.constraint(equalTo: imageTitle.leadingAnchor,constant: 50),
             nameTitle.trailingAnchor.constraint(equalTo: imageTitle.trailingAnchor,constant: 50),
-            nameTitle.widthAnchor.constraint(equalToConstant: 5),
-//            nameTitle.leftAnchor.constraint(equalTo: imageTitle.leftAnchor, constant: 30),
-//            nameTitle.rightAnchor.constraint(equalTo: imageTitle.rightAnchor, constant: 30),
             
             category.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             category.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 53),

@@ -68,12 +68,10 @@ extension CategoriesCollectionView: UICollectionViewDelegate, UICollectionViewDa
 
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "ApiViewController") as! ApiViewController
-        vc.lang = "?category="
+        vc.type = "?category="
         vc.pages = "&page="
         vc.nameOfTitle = cells[indexPath.row].title
         vc.titleName = cells[indexPath.row].title
-
-        //vc.lang = articles?.articles[indexPath.row]
         self.navigationController.pushViewController(vc, animated: true)
     }
 }

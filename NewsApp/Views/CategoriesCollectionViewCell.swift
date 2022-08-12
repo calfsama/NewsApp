@@ -35,6 +35,8 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         configureConstraints()
     }
     
+    // MARK: - Set Constraints
+    
      func configureConstraints(){
          contentView.addSubview(imageTitle)
          contentView.addSubview(nameTitle)

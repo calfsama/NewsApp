@@ -60,11 +60,8 @@ extension SourcesCollectionView: UICollectionViewDelegate, UICollectionViewDataS
         let source = sources?.sources?[indexPath.row]
         cell.nameTitle.text = source?.name
         cell.category.text = source?.category
-        //let cat = categories[indexPath.row].title.lowercased()
         let colors = source?.category
-//        if cat == colors {
-//            cell.color.backgroundColor = categories[indexPath.row].color
-//        }
+
         if colors == "general" {
             cell.color.backgroundColor = UIColor(named: "green")
         }
@@ -95,7 +92,7 @@ extension SourcesCollectionView: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ApiViewController") as! ApiViewController
-        vc.lang = "?sources="
+        vc.type = "?sources="
         vc.nameOfTitle = sources?.sources?[indexPath.row].name ?? "0"
         vc.titleName = sources?.sources?[indexPath.row].id ?? "0"
 

@@ -7,7 +7,9 @@
 
 import Foundation
 
+
 // MARK: - Artcles
+
 struct Articles: Codable {
    // let status: String?
     var totalResults: Int?
@@ -15,24 +17,18 @@ struct Articles: Codable {
 }
 
 // MARK: - Article
+
 struct Article: Codable {
     let source: Source?
-    //let author: String?
-    let title, articleDescription: String?
+    var title: String?
     let url: String?
     let urlToImage: String?
-   /// let content: String?
+
 
     enum CodingKeys: String, CodingKey {
         case title, source
-        case articleDescription = "description"
         case urlToImage, url
     }
 }
 
-//// MARK: - Source
-//struct Source: Codable {
-//    var id: String?
-//    let name: String?
-//}
 
