@@ -17,8 +17,10 @@ class CategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         categoriesCollectionView = CategoriesCollectionView(nav: self.navigationController!)
         
+      
         searchBarController()
         configureConstraints()
         
@@ -27,8 +29,9 @@ class CategoriesViewController: UIViewController {
     }
     
     func searchBarController() {
-        navigationItem.searchController = searchController
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
     }
     

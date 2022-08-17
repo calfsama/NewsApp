@@ -19,11 +19,10 @@ class NetworkService {
     
     // MARK: - Article data
     
-    func fetchCategory(catName: String, kind: String, page: String,pageNumber: Int, apiKey: String, completion: @escaping(Result<Articles, Error>) -> Void) {
+    func fetchCategory(catName: String, kind: String, apiKey: String, page: Int, completion: @escaping(Result<Articles, Error>) -> Void) {
         
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-        let urlString = "https://newsapi.org/v2/top-headlines\(kind)\(catName)&language=en\(page)\(pageNumber)&apiKey=\(apiKey)"
+        let urlString = "https://newsapi.org/v2/top-headlines\(kind)\(catName)&page=\(page)&language=en&apiKey=\(apiKey)"
         print(urlString)
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -65,6 +64,31 @@ class NetworkService {
                 guard let data = data else { return }
                 do {
                     let news = try JSONDecoder().decode(Sources.self, from: data)
+                    print(news)
+                    completion(.success(news))
+                }catch let jsonError {
+                    print("Failed to decode JSON", jsonError)
+                    completion(.failure(jsonError))
+                }
+            }
+        }.resume()
+    }
+    
+    func search(apiKey: String, searchText: String,completion: @escaping(Result<Articles, Error>) -> Void) {
+
+        let urlString = "https://newsapi.org/v2/everything?q=\(searchText)&apiKey=\(apiKey)"
+        guard let url = URL(string: urlString) else {return}
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            print(url)
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Some error")
+                    completion(.failure(error))
+                    return
+                }
+                guard let data = data else { return }
+                do {
+                    let news = try JSONDecoder().decode(Articles.self, from: data)
                     print(news)
                     completion(.success(news))
                 }catch let jsonError {

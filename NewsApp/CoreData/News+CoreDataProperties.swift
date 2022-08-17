@@ -24,4 +24,4 @@ extension News {
     @NSManaged public var date: String?
 
 }
-extension News: Identifiable{}
+//extension News: Identifiable{}

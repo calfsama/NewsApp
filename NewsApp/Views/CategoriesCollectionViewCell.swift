@@ -11,15 +11,7 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "CategoriesCollectionViewCell"
     
-    lazy var imageTitle: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .systemGray
-        image.layer.cornerRadius = 20
-        image.layer.masksToBounds = true
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
+
     
     lazy var nameTitle: UILabel = {
         let label = UILabel()
@@ -33,20 +25,16 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureConstraints()
+        contentView.layer.cornerRadius = 20
     }
     
     // MARK: - Set Constraints
     
      func configureConstraints(){
-         contentView.addSubview(imageTitle)
          contentView.addSubview(nameTitle)
          
         
         NSLayoutConstraint.activate([
-            imageTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageTitle.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageTitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             nameTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             nameTitle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)

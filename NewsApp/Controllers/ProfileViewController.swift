@@ -14,7 +14,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        animationView = .init(name: "68367-newspaper-loading")
+        animationView = .init(name: "23290-newspaper")
         animationView?.frame = view.bounds
         animationView?.loopMode = .loop
         view.addSubview(animationView!)

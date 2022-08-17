@@ -14,6 +14,7 @@ struct Categories{
     var color: UIColor
     var title: String
     
+    
     static func items() -> [Categories] {
         let first = Categories(color: UIColor(named: "green")!, title: "General")
         let second = Categories(color: UIColor(named: "light green")!, title: "Business")
@@ -32,11 +33,9 @@ struct Categories{
 
 struct Constants {
 
-    static let leftDistance: CGFloat = 10
-    static let rightDistance: CGFloat = 10
+    static let leftDistance: CGFloat = 23
+    static let rightDistance: CGFloat = 23
     static let itemLineSpacing: CGFloat = 20
-    static let itemWidth = (UIScreen.main.bounds.width - Constants.leftDistance - Constants.rightDistance - Constants.itemLineSpacing) / 2
-
 }
 // MARK: - Bookmarks model
 

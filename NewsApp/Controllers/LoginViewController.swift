@@ -100,7 +100,6 @@ class LoginViewController: UIViewController {
             nameTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 230),
             
             
-            //email.center
             email.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             email.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 50),
             email.heightAnchor.constraint(equalToConstant: 50),

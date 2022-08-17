@@ -16,7 +16,6 @@
 		97083653288F0E9400C65BD5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97083651288F0E9400C65BD5 /* TableViewCell.swift */; };
 		97083654288F0E9400C65BD5 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97083652288F0E9400C65BD5 /* TableViewCell.xib */; };
 		97083656288F1E4900C65BD5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97083655288F1E4900C65BD5 /* Models.swift */; };
-		970C104F2896E9FC005961EA /* 68367-newspaper-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 970C104D2896E9FC005961EA /* 68367-newspaper-loading.json */; };
 		970C10502896E9FC005961EA /* 91732-hello.json in Resources */ = {isa = PBXBuildFile; fileRef = 970C104E2896E9FC005961EA /* 91732-hello.json */; };
 		970C10522896EABD005961EA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970C10512896EABD005961EA /* ProfileViewController.swift */; };
 		970C105528983561005961EA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 970C105428983561005961EA /* FirebaseAuth */; };
@@ -25,7 +24,7 @@
 		970C105B28983C2F005961EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 970C105A28983C2F005961EA /* GoogleService-Info.plist */; };
 		971622EF2892949F006718A3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 971622EE2892949F006718A3 /* Kingfisher */; };
 		971622F52893218C006718A3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971622F42893218C006718A3 /* WebViewController.swift */; };
-		9742AD422893974E00EF355F /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9742AD412893974E00EF355F /* BookmarksViewController.swift */; };
+		973DCBB128AC1F3800B99EE7 /* 23290-newspaper.json in Resources */ = {isa = PBXBuildFile; fileRef = 973DCBB028AC1F3800B99EE7 /* 23290-newspaper.json */; };
 		97716C1C288FC6890021A231 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97716C1B288FC6890021A231 /* CategoriesViewController.swift */; };
 		97716C1E288FC69C0021A231 /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97716C1D288FC69C0021A231 /* SourcesViewController.swift */; };
 		97716C20288FC70F0021A231 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97716C1F288FC70F0021A231 /* CategoriesCollectionViewCell.swift */; };
@@ -56,12 +55,11 @@
 		97083651288F0E9400C65BD5 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		97083652288F0E9400C65BD5 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		97083655288F1E4900C65BD5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		970C104D2896E9FC005961EA /* 68367-newspaper-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "68367-newspaper-loading.json"; sourceTree = "<group>"; };
 		970C104E2896E9FC005961EA /* 91732-hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "91732-hello.json"; sourceTree = "<group>"; };
 		970C10512896EABD005961EA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		970C105A28983C2F005961EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		971622F42893218C006718A3 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		9742AD412893974E00EF355F /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		973DCBB028AC1F3800B99EE7 /* 23290-newspaper.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "23290-newspaper.json"; sourceTree = "<group>"; };
 		97716C1B288FC6890021A231 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		97716C1D288FC69C0021A231 /* SourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewController.swift; sourceTree = "<group>"; };
 		97716C1F288FC70F0021A231 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 				97716C29288FDF360021A231 /* RegistrationViewController.swift */,
 				97716C27288FDF230021A231 /* LoginViewController.swift */,
 				971622F42893218C006718A3 /* WebViewController.swift */,
-				9742AD412893974E00EF355F /* BookmarksViewController.swift */,
 				970C10512896EABD005961EA /* ProfileViewController.swift */,
 			);
 			path = Controllers;
@@ -172,7 +169,7 @@
 		978B3308288FA85900953DE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				970C104D2896E9FC005961EA /* 68367-newspaper-loading.json */,
+				973DCBB028AC1F3800B99EE7 /* 23290-newspaper.json */,
 				970C104E2896E9FC005961EA /* 91732-hello.json */,
 				97083655288F1E4900C65BD5 /* Models.swift */,
 				979818802892510200C9D889 /* Network.swift */,
@@ -272,10 +269,10 @@
 			files = (
 				97083648288F0BC200C65BD5 /* LaunchScreen.storyboard in Resources */,
 				97083654288F0E9400C65BD5 /* TableViewCell.xib in Resources */,
-				970C104F2896E9FC005961EA /* 68367-newspaper-loading.json in Resources */,
 				97083645288F0BC200C65BD5 /* Assets.xcassets in Resources */,
 				97083643288F0BC000C65BD5 /* Main.storyboard in Resources */,
 				970C10502896E9FC005961EA /* 91732-hello.json in Resources */,
+				973DCBB128AC1F3800B99EE7 /* 23290-newspaper.json in Resources */,
 				970C105B28983C2F005961EA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,7 +326,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9742AD422893974E00EF355F /* BookmarksViewController.swift in Sources */,
 				97716C28288FDF230021A231 /* LoginViewController.swift in Sources */,
 				979818832892512D00C9D889 /* News.swift in Sources */,
 				97083653288F0E9400C65BD5 /* TableViewCell.swift in Sources */,
