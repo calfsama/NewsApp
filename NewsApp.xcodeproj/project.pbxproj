@@ -40,6 +40,7 @@
 		97DC153A28A15EDC00696036 /* News.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97DC153828A15EDC00696036 /* News.xcdatamodeld */; };
 		97DC154328A1840F00696036 /* News+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DC154128A1840E00696036 /* News+CoreDataClass.swift */; };
 		97DC154428A1840F00696036 /* News+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DC154228A1840E00696036 /* News+CoreDataProperties.swift */; };
+		97F0C97828B349E90074595B /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F0C97728B349E90074595B /* AuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		97DC153928A15EDC00696036 /* News.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = News.xcdatamodel; sourceTree = "<group>"; };
 		97DC154128A1840E00696036 /* News+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "News+CoreDataClass.swift"; path = "/Users/tomirisnegmatova/Desktop/Projects/Livo project/NewsApp/CoreData/News+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		97DC154228A1840E00696036 /* News+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "News+CoreDataProperties.swift"; path = "/Users/tomirisnegmatova/Desktop/Projects/Livo project/NewsApp/CoreData/News+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		97F0C97728B349E90074595B /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		994B7774456C9937017395E6 /* Pods-NewsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.debug.xcconfig"; path = "Target Support Files/Pods-NewsApp/Pods-NewsApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 		9708363A288F0BC000C65BD5 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				97AA7B8328ACEE4D00CD6EF8 /* Animation */,
 				97DC151328A0C6E300696036 /* CoreData */,
 				978B3308288FA85900953DE2 /* Models */,
 				978B3307288FA85100953DE2 /* Views */,
@@ -169,14 +172,22 @@
 		978B3308288FA85900953DE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				973DCBB028AC1F3800B99EE7 /* 23290-newspaper.json */,
-				970C104E2896E9FC005961EA /* 91732-hello.json */,
 				97083655288F1E4900C65BD5 /* Models.swift */,
 				979818802892510200C9D889 /* Network.swift */,
 				979818822892512D00C9D889 /* News.swift */,
 				97DC150E289B868E00696036 /* Sources.swift */,
+				97F0C97728B349E90074595B /* AuthManager.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		97AA7B8328ACEE4D00CD6EF8 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				973DCBB028AC1F3800B99EE7 /* 23290-newspaper.json */,
+				970C104E2896E9FC005961EA /* 91732-hello.json */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		97DC151328A0C6E300696036 /* CoreData */ = {
@@ -345,6 +356,7 @@
 				9798187F289250BD00C9D889 /* ApiViewController.swift in Sources */,
 				97083656288F1E4900C65BD5 /* Models.swift in Sources */,
 				97DC153A28A15EDC00696036 /* News.xcdatamodeld in Sources */,
+				97F0C97828B349E90074595B /* AuthManager.swift in Sources */,
 				97DC154428A1840F00696036 /* News+CoreDataProperties.swift in Sources */,
 				97716C1E288FC69C0021A231 /* SourcesViewController.swift in Sources */,
 			);
@@ -502,6 +514,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -531,6 +544,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

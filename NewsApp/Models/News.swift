@@ -13,7 +13,7 @@ import Foundation
 struct Articles: Codable {
    // let status: String?
     var totalResults: Int?
-    let articles: [Article]?
+    var articles: [Article]?
 }
 
 // MARK: - Article

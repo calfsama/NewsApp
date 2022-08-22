@@ -11,13 +11,13 @@ import Foundation
 
 struct Sources: Codable {
     let status: String?
-    let sources: [Source]?
+    var sources: [Source]?
 }
 
 // MARK: - Source
 
 struct Source: Codable {
-    let id, name: String?
+    var id, name: String?
     let url: String?
     let category: String?
     let language: String?

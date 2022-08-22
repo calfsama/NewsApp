@@ -9,7 +9,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-
     let nameTitle: UILabel = {
         let title = UILabel()
         title.text = "Sign in"
@@ -74,43 +73,34 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         email.delegate = self
         password.delegate = self
-        
         view.addSubview(nameTitle)
         view.addSubview(email)
         view.addSubview(password)
         view.addSubview(loginButton)
         view.addSubview(registerButton)
         view.backgroundColor = .systemBackground
-        
         registerButton.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
         configureConstraints()
-   
     }
     
     func configureConstraints() {
-        
-        
         NSLayoutConstraint.activate([
         
             nameTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nameTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 230),
-            
             
             email.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             email.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 50),
             email.heightAnchor.constraint(equalToConstant: 50),
             email.widthAnchor.constraint(equalToConstant: 350),
             
-            
             password.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 20),
             password.heightAnchor.constraint(equalToConstant: 50),
             password.widthAnchor.constraint(equalToConstant: 350),
-            
             
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 20),
@@ -119,31 +109,24 @@ class LoginViewController: UIViewController {
             
             registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 300)
-        
         ])
     }
     
-    
-        @objc private func didTapCreateAccountButton() {
-    
-            let vc = RegistrationViewController()
-            present(UINavigationController(rootViewController: vc), animated: true)
-        }
+    @objc private func didTapCreateAccountButton() {
+        let vc = RegistrationViewController()
+        present(UINavigationController(rootViewController: vc), animated: true)
+    }
     
     @objc private func didTapLoginButton() {
-        
         password.resignFirstResponder()
         email.resignFirstResponder()
-        
         guard let userEmail = email.text, !userEmail.isEmpty,
               let userPassword = password.text, !userPassword.isEmpty, userPassword.count >= 8 else {
             return
         }
-        
         //login functionally
         var emailAddress: String?
         var username: String?
-        
         if userEmail.contains("@"), userEmail.contains("."){
             //email
             emailAddress = userEmail
@@ -153,9 +136,6 @@ class LoginViewController: UIViewController {
             username = userEmail
         }
     }
-    
-    
-
 }
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

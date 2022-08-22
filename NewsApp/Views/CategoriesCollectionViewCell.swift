@@ -8,10 +8,7 @@
 import UIKit
 
 class CategoriesCollectionViewCell: UICollectionViewCell {
-    
     static let identifier = "CategoriesCollectionViewCell"
-    
-
     
     lazy var nameTitle: UILabel = {
         let label = UILabel()
@@ -31,9 +28,7 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     // MARK: - Set Constraints
     
      func configureConstraints(){
-         contentView.addSubview(nameTitle)
-         
-        
+        contentView.addSubview(nameTitle)
         NSLayoutConstraint.activate([
             
             nameTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),

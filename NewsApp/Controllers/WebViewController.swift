@@ -8,7 +8,6 @@
 import UIKit
 import WebKit
 import CoreData
-import SwiftUI
 
 class WebViewController: UIViewController {
     @IBOutlet weak var bookmarks: UIBarButtonItem!
@@ -19,6 +18,7 @@ class WebViewController: UIViewController {
     var titleArticle: String = ""
     var source: String = ""
     var image: String = ""
+    var spinner: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
     var toggleButtonChecked = true
     var commitPredicate: NSPredicate?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -28,9 +28,17 @@ class WebViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(webView)
         configureConstraints()
+        webView.addSubview(spinner)
+//        spinner = UIActivityIndicatorView(style: .gray)
+        spinner.center = webView.center
+        webView.bringSubviewToFront(spinner)
         webView.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
         guard let url = URL(string: urlString) else { return }
         webView.load(URLRequest(url: url))
+        if webView.load(URLRequest(url: url)) != nil {
+            spinner.stopAnimating()
+        }
         let fetchRequest: NSFetchRequest <News> = News.fetchRequest()
         fetchRequest.predicate = commitPredicate
         commitPredicate = NSPredicate(format: "title == %@", titleArticle)

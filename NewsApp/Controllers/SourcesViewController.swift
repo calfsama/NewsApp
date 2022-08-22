@@ -6,73 +6,84 @@
 //
 
 import UIKit
+import SwiftUI
+import simd
 
 class SourcesViewController: UIViewController {
     
-    
     var network = NetworkService()
-    var sources: Sources?
-    private var timer: Timer?
-    var key:String = "5ed9b9eb9b7746b8a925c87ab583ccfa"
-    
+    var searchData: Sources?
+    var data: Sources?
+    var sources: String = ""
+    var key: String = "8daa6dab2df841e98b029ecbae2af259"
     private var sourcesCollectionView: SourcesCollectionView!
-    
     private var sourcesCollectionViewCell = SourcesCollectionViewCell()
-    
-    
     let searchController = UISearchController(searchResultsController: nil)
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         sourcesCollectionView = SourcesCollectionView(nav: self.navigationController!)
         navigationController?.navigationBar.prefersLargeTitles = true
-        // sourcesCollectionView.indicator.center = view.center
         
+        searchController.searchBar.delegate = self
+        fetchSources()
+        }
+    
+    func fetchSources() {
         network.fetchSources(apiKey: key) { [weak self] (result) in
             switch result {
             case .success(let response):
                 self?.sourcesCollectionView.sources = response
+                self?.searchData = response
+                self?.data = response
                 self?.sourcesCollectionView.reloadData()
                 self?.sourcesCollectionView.indicator.stopAnimating()
             case .failure(let error):
                 print("error", error)
             }
         }
-        
         view.addSubview(sourcesCollectionView)
         navigationItem.searchController = searchController
-        searchController.searchBar.delegate = self
+//        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        
-        
-        
+        definesPresentationContext = true
         sourcesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         sourcesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         sourcesCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
         sourcesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        
+       // searchData = sourcesCollectionView.sources?.sources
     }
+    
+//    func updateSearchResults(for searchController: UISearchController) {
+//
+//        filterContentForSearchText(searchController.searchBar.text!)
+//    }
+    
+//    func filterContentForSearchText(_ searchText: String) {
+//        print(searchData)
+////        searchData = sourcesCollectionView.sources?.sources?.filter({ (source: Source ) -> Bool in
+////            return source.name?.lowercased().contains(searchText.lowercased()) ?? (0 != 0)
+////        })
+////        sourcesCollectionView.reloadData()
+//    }
+    
+
 }
-
-
 extension SourcesViewController: UISearchBarDelegate {
-    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
         
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [self] (_) in
-            self.network.search(apiKey: key, searchText: searchText) { [weak self] (result) in
-                switch result {
-                case .success(let response):
-                    self?.sourcesCollectionView.articles = response
-                    self?.sourcesCollectionView.reloadData()
-                case .failure(let error):
-                    print("error", error)
-                }
-            }
+        if !searchText.isEmpty{} else{
+            data = searchData
+        }
+        sourcesCollectionView.sources?.sources = searchData?.sources?.filter({ (source: Source )in
+            return (source.name?.lowercased().contains(searchText.lowercased()))!
         })
+        sourcesCollectionView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        fetchSources()
     }
 }
