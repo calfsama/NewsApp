@@ -45,11 +45,11 @@ class SourcesCollectionViewCell: UICollectionViewCell {
     //MARK: - Set constraints
     
     private func configureConstraints() {
-        contentView.addSubview(nameTitle)
-        contentView.addSubview(category)
         contentView.addSubview(color)
+        contentView.addSubview(category)
+        contentView.addSubview(nameTitle)
+        
         NSLayoutConstraint.activate([
-            
             nameTitle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             nameTitle.leftAnchor.constraint(equalTo: contentView.leftAnchor,constant: 10),
             nameTitle.rightAnchor.constraint(equalTo: contentView.rightAnchor,constant: -10),

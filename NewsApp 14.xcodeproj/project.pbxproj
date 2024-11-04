@@ -15,11 +15,11 @@
 		97083653288F0E9400C65BD5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97083651288F0E9400C65BD5 /* TableViewCell.swift */; };
 		97083654288F0E9400C65BD5 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97083652288F0E9400C65BD5 /* TableViewCell.xib */; };
 		97083656288F1E4900C65BD5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97083655288F1E4900C65BD5 /* Models.swift */; };
-		9709850B2CD977F900A7300D /* News+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970985092CD977F900A7300D /* News+CoreDataClass.swift */; };
-		9709850C2CD977F900A7300D /* News+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709850A2CD977F900A7300D /* News+CoreDataProperties.swift */; };
 		970C10502896E9FC005961EA /* 91732-hello.json in Resources */ = {isa = PBXBuildFile; fileRef = 970C104E2896E9FC005961EA /* 91732-hello.json */; };
 		970C10522896EABD005961EA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970C10512896EABD005961EA /* ProfileViewController.swift */; };
 		971622F52893218C006718A3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971622F42893218C006718A3 /* WebViewController.swift */; };
+		9722C7FA29AC83B70040F884 /* News+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9722C7F829AC83B60040F884 /* News+CoreDataClass.swift */; };
+		9722C7FB29AC83B70040F884 /* News+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9722C7F929AC83B70040F884 /* News+CoreDataProperties.swift */; };
 		9722C7FC29AC841F0040F884 /* News.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97DC153828A15EDC00696036 /* News.xcdatamodeld */; };
 		973DCBB128AC1F3800B99EE7 /* 23290-newspaper.json in Resources */ = {isa = PBXBuildFile; fileRef = 973DCBB028AC1F3800B99EE7 /* 23290-newspaper.json */; };
 		97716C1C288FC6890021A231 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97716C1B288FC6890021A231 /* CategoriesViewController.swift */; };
@@ -68,11 +68,11 @@
 		97083651288F0E9400C65BD5 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		97083652288F0E9400C65BD5 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		97083655288F1E4900C65BD5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		970985092CD977F900A7300D /* News+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+CoreDataClass.swift"; sourceTree = "<group>"; };
-		9709850A2CD977F900A7300D /* News+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		970C104E2896E9FC005961EA /* 91732-hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "91732-hello.json"; sourceTree = "<group>"; };
 		970C10512896EABD005961EA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		971622F42893218C006718A3 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		9722C7F829AC83B60040F884 /* News+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "News+CoreDataClass.swift"; path = "/Users/tomirisnegmatova/Documents/Projects/Livo project/NewsApp/News+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		9722C7F929AC83B70040F884 /* News+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "News+CoreDataProperties.swift"; path = "/Users/tomirisnegmatova/Documents/Projects/Livo project/NewsApp/News+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		973DCBB028AC1F3800B99EE7 /* 23290-newspaper.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "23290-newspaper.json"; sourceTree = "<group>"; };
 		97716C1B288FC6890021A231 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		97716C1D288FC69C0021A231 /* SourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewController.swift; sourceTree = "<group>"; };
@@ -124,8 +124,6 @@
 		9708362F288F0BC000C65BD5 = {
 			isa = PBXGroup;
 			children = (
-				970985092CD977F900A7300D /* News+CoreDataClass.swift */,
-				9709850A2CD977F900A7300D /* News+CoreDataProperties.swift */,
 				9708363A288F0BC000C65BD5 /* NewsApp */,
 				97083639288F0BC000C65BD5 /* Products */,
 			);
@@ -142,6 +140,8 @@
 		9708363A288F0BC000C65BD5 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				9722C7F829AC83B60040F884 /* News+CoreDataClass.swift */,
+				9722C7F929AC83B70040F884 /* News+CoreDataProperties.swift */,
 				97AA7B8328ACEE4D00CD6EF8 /* Animation */,
 				97DC151328A0C6E300696036 /* CoreData */,
 				978B3308288FA85900953DE2 /* Models */,
@@ -340,9 +340,9 @@
 				97B79FE62A67CDF400ACCF4E /* ArticlesCollectionViewCell.swift in Sources */,
 				97B79FDC2A669CCD00ACCF4E /* BusinessCollectionView.swift in Sources */,
 				97B79FD62A6659D900ACCF4E /* MainViewController.swift in Sources */,
+				9722C7FA29AC83B70040F884 /* News+CoreDataClass.swift in Sources */,
+				9722C7FB29AC83B70040F884 /* News+CoreDataProperties.swift in Sources */,
 				97B79FE82A67CFCB00ACCF4E /* ArticlesCollectionView.swift in Sources */,
-				9709850B2CD977F900A7300D /* News+CoreDataClass.swift in Sources */,
-				9709850C2CD977F900A7300D /* News+CoreDataProperties.swift in Sources */,
 				9708363E288F0BC000C65BD5 /* SceneDelegate.swift in Sources */,
 				971622F52893218C006718A3 /* WebViewController.swift in Sources */,
 				97716C24288FC74E0021A231 /* SourcesCollectionView.swift in Sources */,

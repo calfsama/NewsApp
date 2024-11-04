@@ -35,13 +35,14 @@ class ApiViewController: UIViewController, UIScrollViewDelegate {
         table?.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
         table?.delegate = self
         table?.dataSource = self
-        navigationItem.largeTitleDisplayMode = .never
-        table?.isSkeletonable = true
-        table?.showAnimatedGradientSkeleton()
+        navigationItem.largeTitleDisplayMode = .always
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        table?.isSkeletonable = true
+        table?.showAnimatedGradientSkeleton()
         if titleName == "" && type == "" && searchText == ""{
             loadArticles()
         }else if page == "" && searchText == ""{
@@ -130,7 +131,23 @@ extension ApiViewController: UITableViewDelegate, SkeletonTableViewDataSource  {
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        var emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.table.bounds.size.width, height: self.table.bounds.size.height))
+        if data.count == 0 {
+            emptyLabel.text = "No Bookmarks"
+            emptyLabel.textColor = .gray
+            emptyLabel.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
+            emptyLabel.textAlignment = NSTextAlignment.center
+            self.table.backgroundView = emptyLabel
+            self.table.separatorStyle = .none
+            return 0
+        }
+        else {
+            emptyLabel.text = ""
+            self.table.backgroundView = emptyLabel
+            self.table.separatorStyle = .none
+            return data.count
+        }
+            
     }
  
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
@@ -197,6 +214,7 @@ extension ApiViewController: UITableViewDelegate, SkeletonTableViewDataSource  {
             }
         }
     }
+    
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         

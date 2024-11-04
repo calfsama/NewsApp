@@ -11,85 +11,61 @@ import CoreData
 
 class WebViewController: UIViewController {
     @IBOutlet weak var bookmarks: UIBarButtonItem!
-    let webView = WKWebView() 
-    var article: Article?
+    let webView = WKWebView()
     var news = [News]()
     var urlString: String = ""
     var titleArticle: String = ""
     var source: String = ""
     var image: String = ""
-    var spinner: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
-    var toggleButtonChecked = true
+    var spinner: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
     var commitPredicate: NSPredicate?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(webView)
+        indicator()
+        buttonState()
         configureConstraints()
-        webView.addSubview(spinner)
-//        spinner = UIActivityIndicatorView(style: .gray)
-        spinner.center = webView.center
-        webView.bringSubviewToFront(spinner)
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        spinner.startAnimating()
         guard let url = URL(string: urlString) else { return }
         webView.load(URLRequest(url: url))
-        if webView.load(URLRequest(url: url)) != nil {
-            spinner.stopAnimating()
-        }
-        let fetchRequest: NSFetchRequest <News> = News.fetchRequest()
-        fetchRequest.predicate = commitPredicate
-        commitPredicate = NSPredicate(format: "title == %@", titleArticle)
-  
-        do {
-            let data = try context.fetch(fetchRequest)
-            print(data)
-            for i in data {
-                if i.title == titleArticle {
-                    print(i)
-                    print(titleArticle)
-                    navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark.fill")
-                }
-                else if i == nil{
-                    print(i)
-                    navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark")
-                }
-            }
-        }
-        catch {
-            print("Error\(error)")
-        }
+    }
+    
+    func indicator() {
+        webView.addSubview(spinner)
+        spinner.center = webView.center
+        spinner.startAnimating()
+        spinner.hidesWhenStopped = true
+        webView.bringSubviewToFront(spinner)
     }
   
     func configureConstraints() {
+        view.addSubview(webView)
+        webView.navigationDelegate = self
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            
             webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            webView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
-            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            webView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            webView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
         ])
     }
     
-    @IBAction func addBookmarks(_ sender: UIBarButtonItem){
+    func buttonState() {
         let fetchRequest: NSFetchRequest <News> = News.fetchRequest()
         fetchRequest.predicate = commitPredicate
         commitPredicate = NSPredicate(format: "title == %@", titleArticle)
-        
-        do{
-            let data = try context.fetch(fetchRequest).first
-            print(data)
-            if data == nil {
-                navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark.fill")
-                saveArticles()
-            }
-            else {
-                print("Object has been deleted")
-                print(titleArticle)
-                navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark")
-                deleteArticles()
+        do {
+            let data = try context.fetch(fetchRequest)
+            for i in data {
+                if i.title == titleArticle {
+                    print("\(i.title ?? "") and \(titleArticle)")
+                    navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark.fill")
+                }
+                else if i.title == nil{
+                    navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark")
+                }
             }
         }
         catch {
@@ -118,7 +94,6 @@ class WebViewController: UIViewController {
         commitPredicate = NSPredicate(format: "title == %@", titleArticle)
         do {
             let object = try context.fetch(object)
-            print(object)
             for i in object {
                 if i.title == titleArticle {
                     context.delete(i)
@@ -133,6 +108,39 @@ class WebViewController: UIViewController {
         catch {
             print("Error \(error)")
         }
+    }
+    
+    @IBAction func addBookmarks(_ sender: UIBarButtonItem){
+        let fetchRequest: NSFetchRequest <News> = News.fetchRequest()
+        fetchRequest.predicate = commitPredicate
+        commitPredicate = NSPredicate(format: "title == %@", titleArticle)
+        do{
+            let data = try context.fetch(fetchRequest).first
+            if data == nil {
+                navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark.fill")
+                saveArticles()
+            }
+            else {
+                navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark")
+                deleteArticles()
+            }
+        }
+        catch {
+            print("Error\(error)")
+        }
+    }
+}
+
+extension WebViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        indicator()
+    }
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        spinner.stopAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        spinner.stopAnimating()
     }
 }
 

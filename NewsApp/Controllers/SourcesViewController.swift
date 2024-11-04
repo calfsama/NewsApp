@@ -14,18 +14,16 @@ class SourcesViewController: UIViewController {
     var network = NetworkService()
     var searchData: Sources?
     var data: Sources?
-    var sources: String = ""
     var key: String = "8daa6dab2df841e98b029ecbae2af259"
     private var sourcesCollectionView: SourcesCollectionView!
-    private var sourcesCollectionViewCell = SourcesCollectionViewCell()
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sourcesCollectionView = SourcesCollectionView(nav: self.navigationController!)
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        searchController.searchBar.delegate = self
+        configureConstraints()
+        setSearchBar()
         fetchSources()
         }
     
@@ -42,33 +40,27 @@ class SourcesViewController: UIViewController {
                 print("error", error)
             }
         }
-        view.addSubview(sourcesCollectionView)
-        navigationItem.searchController = searchController
-//        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        sourcesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        sourcesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        sourcesCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
-        sourcesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-       // searchData = sourcesCollectionView.sources?.sources
     }
     
-//    func updateSearchResults(for searchController: UISearchController) {
-//
-//        filterContentForSearchText(searchController.searchBar.text!)
-//    }
+    func configureConstraints() {
+        view.addSubview(sourcesCollectionView)
+        
+        NSLayoutConstraint.activate([
+            sourcesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            sourcesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            sourcesCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            sourcesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
     
-//    func filterContentForSearchText(_ searchText: String) {
-//        print(searchData)
-////        searchData = sourcesCollectionView.sources?.sources?.filter({ (source: Source ) -> Bool in
-////            return source.name?.lowercased().contains(searchText.lowercased()) ?? (0 != 0)
-////        })
-////        sourcesCollectionView.reloadData()
-//    }
-    
-
+    func setSearchBar() {
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+    }
 }
+
 extension SourcesViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

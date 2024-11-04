@@ -6,15 +6,12 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CategoriesViewController: UIViewController {
     
     private var categoriesCollectionView: CategoriesCollectionView!
-    var apiViewController = ApiViewController()
     let searchController = UISearchController(searchResultsController: ApiViewController())
-    var network = NetworkService()
-    var articles: Articles?
-    var key: String = "8a08b923eb6f47619e3cbb0fa7c4e114"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,17 +28,9 @@ class CategoriesViewController: UIViewController {
         searchController.searchBar.delegate = self
     }
     
-    var searchBarIsEmpty: Bool {
-        guard let text = searchController.searchBar.text else { return false }
-        return text.isEmpty
-    }
-    
-    var isFiltering: Bool {
-        return searchController.isActive && !searchBarIsEmpty
-    }
-    
     private func configureConstraints() {
         view.addSubview(categoriesCollectionView)
+        
         NSLayoutConstraint.activate([
             categoriesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             categoriesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -51,6 +40,7 @@ class CategoriesViewController: UIViewController {
         ])
     }
 }
+
 extension CategoriesViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

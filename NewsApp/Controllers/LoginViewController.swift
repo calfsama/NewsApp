@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -13,7 +14,6 @@ class LoginViewController: UIViewController {
         let title = UILabel()
         title.text = "Sign in"
         title.font = UIFont.systemFont(ofSize: 45, weight: .semibold)
-
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
@@ -73,20 +73,18 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        email.delegate = self
-        password.delegate = self
-        view.addSubview(nameTitle)
-        view.addSubview(email)
-        view.addSubview(password)
-        view.addSubview(loginButton)
-        view.addSubview(registerButton)
-        view.backgroundColor = .systemBackground
-        registerButton.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
         configureConstraints()
+        view.backgroundColor = .systemBackground
+        loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpInside)
     }
     
     func configureConstraints() {
+        view.addSubview(email)
+        view.addSubview(password)
+        view.addSubview(nameTitle)
+        view.addSubview(loginButton)
+        view.addSubview(registerButton)
         NSLayoutConstraint.activate([
         
             nameTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -118,34 +116,20 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func didTapLoginButton() {
-        password.resignFirstResponder()
-        email.resignFirstResponder()
-        guard let userEmail = email.text, !userEmail.isEmpty,
-              let userPassword = password.text, !userPassword.isEmpty, userPassword.count >= 8 else {
-            return
+        
+        if let email = email.text, let password = password.text {
+            Auth.auth().signIn(withEmail: email, password: password) { (success, error) in
+                if let error = error {
+                    print("Error \(error)")
+                }
+                else if let success = success{
+                    print("Successfully")
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let tabBar = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+                    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBar)
+                }
+            }
         }
-        //login functionally
-        var emailAddress: String?
-        var username: String?
-        if userEmail.contains("@"), userEmail.contains("."){
-            //email
-            emailAddress = userEmail
-        }
-        else {
-            // username
-            username = userEmail
-        }
-    }
-}
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == email {
-            password.becomeFirstResponder()
-        }
-        else if textField == password {
-            didTapLoginButton()
-        }
-        return true
     }
 }
 

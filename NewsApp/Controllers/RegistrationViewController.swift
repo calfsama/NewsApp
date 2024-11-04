@@ -8,7 +8,6 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
-import Firebase
 
 class RegistrationViewController: UIViewController {
     
@@ -97,16 +96,15 @@ class RegistrationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(usernameField)
         view.addSubview(email)
-        view.addSubview(password)
         view.addSubview(number)
-        view.addSubview(registerButton)
+        view.addSubview(password)
         view.addSubview(nameTitle)
+        view.addSubview(usernameField)
+        view.addSubview(registerButton)
         view.backgroundColor = .systemBackground
         registerButton.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
         configureConstraints()
-        
     }
     
     func configureConstraints() {
@@ -142,34 +140,29 @@ class RegistrationViewController: UIViewController {
         ])
     }
     
-    func checkValid() -> String? {
-        if email.text == "" ||
-           usernameField.text == "" ||
-           password.text == "" ||
-           number.text == "" ||
-           email.text == nil ||
-           usernameField.text == nil ||
-           number.text == nil ||
-           password.text == nil {
-            return "Please fill in all fields"
-        }
-        return nil
-    }
-    
     @objc private func didTapRegister() {
-        print("tap")
-        let signUpManager = AuthManager()
         if let email = email.text, let password = password.text {
-            signUpManager.createUser(email: email, password: password) { [weak self] (success) in
-                guard let self = self else {return}
-                if (success) {
-                    print("User was successfully created")
+            Auth.auth().createUser(withEmail: email, password: password) {(success, error) in
+                if let error = error {
+                    print("Error \(error)")
                 }
-                else {
-                    print("Error")
+                else if let success = success {
+                    print("Success \(success.user.uid)")
+                    if let username = self.usernameField.text, let number = self.number.text {
+                        let db = Firestore.firestore()
+                        db.collection("users").addDocument(data: ["email": email, "username": username, "password": password, "number": number, "uid": success.user.uid]) { (error) in
+                            if error != nil {
+                                print("Error saving user in database")
+                                }
+                            print(success.user.uid)
+                            }
+                        let loginVC = LoginViewController()
+                        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginVC)
+                        }
+                    }
                 }
             }
         }
     }
-}
+
 

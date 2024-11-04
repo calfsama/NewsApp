@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class TableViewCell: UITableViewCell {
     static let identifier = "TableViewCell"
@@ -21,6 +22,7 @@ class TableViewCell: UITableViewCell {
         contentView.addSubview(myImage)
         contentView.addSubview(myLabel)
         contentView.addSubview(sources)
+        myLabel.skeletonTextNumberOfLines = 3
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

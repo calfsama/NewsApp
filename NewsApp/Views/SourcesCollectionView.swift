@@ -10,10 +10,9 @@ import UIKit
 class SourcesCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout {
     var sourcesViewController = SourcesViewController()
     var sources: Sources?
-    var article: Articles?
     var categories = [Categories]()
     var navigationController: UINavigationController
-    var indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    var indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
     init(nav: UIViewController) {
     let layout = UICollectionViewFlowLayout()
@@ -24,14 +23,13 @@ class SourcesCollectionView: UICollectionView, UICollectionViewDelegateFlowLayou
         delegate = self
         dataSource = self
         register(SourcesCollectionViewCell.self, forCellWithReuseIdentifier: SourcesCollectionViewCell.identifier)
-        indicator.frame = CGRect(x: 170, y: 280, width: 40, height: 40)
         self.addSubview(indicator)
         self.bringSubviewToFront(indicator)
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        indicator.frame = CGRect(x: 170, y: 280, width: 40, height: 40)
         indicator.startAnimating()
         translatesAutoresizingMaskIntoConstraints = false
         layout.minimumLineSpacing = Constants.itemLineSpacing
-        contentInset = UIEdgeInsets(top: 0, left: Constants.leftDistance, bottom: 0, right: Constants.rightDistance)
+        contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         showsVerticalScrollIndicator = false
     }
         
@@ -42,14 +40,12 @@ class SourcesCollectionView: UICollectionView, UICollectionViewDelegateFlowLayou
 
 extension SourcesCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
         return sources?.sources?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: SourcesCollectionViewCell.identifier, for: indexPath) as! SourcesCollectionViewCell
- 
-        var source = sources?.sources?[indexPath.row]
+        let source = sources?.sources?[indexPath.row]
         cell.nameTitle.text = source?.name
         cell.category.text = source?.category
         cell.contentView.backgroundColor = UIColor(named: "gray2")
@@ -79,7 +75,7 @@ extension SourcesCollectionView: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 180, height: 180)
+        return CGSize(width: collectionView.frame.width / 2.1 * 0.92, height: 180)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

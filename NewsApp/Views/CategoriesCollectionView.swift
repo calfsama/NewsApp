@@ -26,7 +26,7 @@ class CategoriesCollectionView: UICollectionView, UICollectionViewDelegateFlowLa
         register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: CategoriesCollectionViewCell.identifier)
         translatesAutoresizingMaskIntoConstraints = false
         layout.minimumLineSpacing = Constants.itemLineSpacing
-        contentInset = UIEdgeInsets(top: 0, left: Constants.leftDistance, bottom: 0, right: Constants.rightDistance)
+        contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         showsVerticalScrollIndicator = false
     }
     
@@ -54,7 +54,7 @@ extension CategoriesCollectionView: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 180, height: 180)
+        return CGSize(width: collectionView.frame.width / 2.1 * 0.92, height: 180)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
