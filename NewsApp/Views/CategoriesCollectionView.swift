@@ -47,8 +47,8 @@ extension CategoriesCollectionView: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.identifier, for: indexPath) as! CategoriesCollectionViewCell
-      
-        cell.contentView.backgroundColor = cells[indexPath.row].color
+        
+        cell.image.image = cells[indexPath.row].image
         cell.nameTitle.text = cells[indexPath.row].title
         return cell
     }

@@ -142,6 +142,7 @@
 		9708363A288F0BC000C65BD5 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				977FDD7C2CDB3621009AD101 /* t */,
 				97AA7B8328ACEE4D00CD6EF8 /* Animation */,
 				97DC151328A0C6E300696036 /* CoreData */,
 				978B3308288FA85900953DE2 /* Models */,
@@ -157,6 +158,24 @@
 				97F0C97928B351B20074595B /* GoogleService-Info.plist */,
 			);
 			path = NewsApp;
+			sourceTree = "<group>";
+		};
+		977FDD7C2CDB3621009AD101 /* t */ = {
+			isa = PBXGroup;
+			children = (
+				97B79FD12A66558C00ACCF4E /* MainCategoriesCollectionViewCell.swift */,
+				97B79FD32A66587F00ACCF4E /* TrendingCollectionView.swift */,
+				97B79FD72A66646B00ACCF4E /* MainCategoriesCollectionReusableView.swift */,
+				97B79FD92A668A6700ACCF4E /* HeaderCategoriesCollectionViewCell.swift */,
+				97B79FDB2A669CCD00ACCF4E /* BusinessCollectionView.swift */,
+				97B79FDD2A669D3E00ACCF4E /* EntertainmentCollectionView.swift */,
+				97B79FDF2A669E6200ACCF4E /* HealthCollectionView.swift */,
+				97B79FE12A669EDB00ACCF4E /* SportsCollectionView.swift */,
+				97B79FE32A669F1600ACCF4E /* TechnologyCollectionView.swift */,
+				97B79FE52A67CDF400ACCF4E /* ArticlesCollectionViewCell.swift */,
+				97B79FE72A67CFCB00ACCF4E /* ArticlesCollectionView.swift */,
+			);
+			path = t;
 			sourceTree = "<group>";
 		};
 		978B3306288FA82000953DE2 /* Controllers */ = {
@@ -184,17 +203,6 @@
 				97716C21288FC7310021A231 /* CategoriesCollectionView.swift */,
 				97716C25288FC7620021A231 /* SourcesCollectionViewCell.swift */,
 				97716C23288FC74E0021A231 /* SourcesCollectionView.swift */,
-				97B79FD12A66558C00ACCF4E /* MainCategoriesCollectionViewCell.swift */,
-				97B79FD32A66587F00ACCF4E /* TrendingCollectionView.swift */,
-				97B79FD72A66646B00ACCF4E /* MainCategoriesCollectionReusableView.swift */,
-				97B79FD92A668A6700ACCF4E /* HeaderCategoriesCollectionViewCell.swift */,
-				97B79FDB2A669CCD00ACCF4E /* BusinessCollectionView.swift */,
-				97B79FDD2A669D3E00ACCF4E /* EntertainmentCollectionView.swift */,
-				97B79FDF2A669E6200ACCF4E /* HealthCollectionView.swift */,
-				97B79FE12A669EDB00ACCF4E /* SportsCollectionView.swift */,
-				97B79FE32A669F1600ACCF4E /* TechnologyCollectionView.swift */,
-				97B79FE52A67CDF400ACCF4E /* ArticlesCollectionViewCell.swift */,
-				97B79FE72A67CFCB00ACCF4E /* ArticlesCollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
